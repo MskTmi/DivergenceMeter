@@ -40,6 +40,7 @@ function initializeTransition(frameDataList, configuration) {
 
 	setTimeout(function () {
 		updateTimeLine(frameDataList, configuration);
+		//这里可以写Ajax
 	}, generateRandomIntegerNumber(configuration.minimalUpdateDelay, configuration.maximalUpdateDelay));
 }
 
