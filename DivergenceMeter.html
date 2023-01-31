@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>DivergenceMeter</title>
+	<link rel="stylesheet" href="Scripts/DM.css" />
+	<script type="text/javascript" src="Scripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="Scripts/divergence-meter.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			//立刻显示
+			initializeDivergenceMeter({
+				divergenceMeterElement: $(".divergence-meter"),
+				minimalUpdateDelay: 0,
+				maximalUpdateDelay: 0,
+				minimalTransitionNumber: 8,
+				maximalTransitionNumber: 20,
+				transitionDelay: 60,
+				one: true,
+				//自定义数字
+				Number: "47845518"
+			})
+			initializeDivergenceMeter({
+				divergenceMeterElement: $(".divergence-meter"),
+				minimalUpdateDelay: 10000,
+				maximalUpdateDelay: 20000,
+				minimalTransitionNumber: 8,
+				maximalTransitionNumber: 20,
+				transitionDelay: 60,
+				one: false,
+				//自定义数字
+				Number: "47845518"
+			})
+		});
+
+	</script>
+</head>
+
+<body>
+	<div class="divergence-meter">
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+		<div class="frame digit"></div>
+	</div>
+	<div id="croix"></div>
+</body>
+
+</html>

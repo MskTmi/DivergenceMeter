@@ -1,0 +1,41 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	background: url(/image/fond.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.divergence-meter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -153px 0 0 -416px;
+	background-color: #000;
+}
+
+.divergence-meter div {
+	float: left;
+	height: 307px;
+	width: 104px;
+}
+
+.divergence-meter .frame {
+	background-image: url(/image/empty.png);
+}
+
+#croix {
+	position: absolute;
+	z-index: 999999;
+	width: 100%;
+	height: 100%;
+	opacity: 0.3;
+}
