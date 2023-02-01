@@ -39,8 +39,11 @@ function initializeTransition(frameDataList, configuration) {
 	}
 
 	setTimeout(function () {
+		//ajax获取数字
+		getToken().then((result) => {
+			totpToken = result;
+		})
 		updateTimeLine(frameDataList, configuration);
-		//这里可以写Ajax
 	}, generateRandomIntegerNumber(configuration.minimalUpdateDelay, configuration.maximalUpdateDelay));
 }
 
@@ -65,4 +68,20 @@ function updateTimeLine(frameDataList, configuration) {
 	}
 
 	setTimeout(function () { updateTimeLine(frameDataList, configuration); }, configuration.transitionDelay);
+}
+function getToken() {
+	return new Promise(function (resolve) {
+		$.ajax({
+			type: 'post',
+			url: './xxxxx.ashx',
+			async: false,
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("获取失败!");
+			},
+			success: function (data) {
+				console.log(data);
+				resolve(data);
+			}
+		})
+	});
 }
