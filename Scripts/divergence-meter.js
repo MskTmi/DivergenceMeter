@@ -38,9 +38,9 @@ function initializeTransition(frameDataList, configuration) {
 		frameDataList[key].remainingIterationNumber = configuration.minimalTransitionNumber + additionnalIterationNumber;
 	}
 
-	setTimeout(function () {
+	setTimeout(async function () {
 		//ajax获取数字
-		getToken().then((result) => {
+		await getToken().then((result) => {
 			totpToken = result;
 		})
 		updateTimeLine(frameDataList, configuration);
@@ -56,7 +56,8 @@ function updateTimeLine(frameDataList, configuration) {
 			frameDataList[key].remainingIterationNumber--;
 			activeFrameNumber++;
 		} else {
-			randomizeImage(frameDataList[key], configuration.Number);
+			//最终显示的数字
+			randomizeImage(frameDataList[key], configuration.Number); //`configuration.Number`改为`totpToken`可以使用 `getToken()` 获取的参数
 		}
 	}
 
@@ -76,9 +77,12 @@ function getToken() {
 			url: './xxxxx.ashx',
 			async: false,
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				alert("获取失败!");
+				console.log("获取失败!");
+				//使用随机数
+				resolve(String(generateRandomIntegerNumber(0, 100000000)));
 			},
 			success: function (data) {
+				//data为string
 				console.log(data);
 				resolve(data);
 			}
