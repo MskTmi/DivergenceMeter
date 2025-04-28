@@ -21,9 +21,8 @@
 | `Number`                  | String  | `'1.048596'` | 如需一次性展示静态数字，可填写字符串（支持小数点 `.`），否则留空通过 AJAX 获取 |
 
 ### 示例：
-
+#### 循环运行，通过 getToken() 获取显示内容
 ```JavaScript
-//循环运行，通过 getToken() 获取显示内容：
 initializeDivergenceMeter({
     minimalUpdateDelay: 10000,      // 动态模式下，最小刷新间隔（ms）
     maximalUpdateDelay: 20000,      // 动态模式下，最大刷新间隔（ms）
@@ -35,17 +34,16 @@ initializeDivergenceMeter({
 });
 ```
 > 每隔 10-20s 从 Ajax 获取一次数字并显示
-
+#### 单次运行，显示静态数字
 ```JavaScript
-// 单次运行：显示静态数字
 initializeDivergenceMeter({
-	minimalUpdateDelay: 0,
-	maximalUpdateDelay: 0,
-	minimalTransitionNumber: 8,
-	maximalTransitionNumber: 20,
-	transitionDelay: 60,
-	cycleRun: false,
-	Number: '1.048596'
+    minimalUpdateDelay: 0,
+    maximalUpdateDelay: 0,
+    minimalTransitionNumber: 8,
+    maximalTransitionNumber: 20,
+    transitionDelay: 60,
+    cycleRun: false,
+    Number: '1.048596'
 });
 ```
 > 进入页面时显示 `1.048596`（世界线变动率）且不会刷新
