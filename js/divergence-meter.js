@@ -1,20 +1,19 @@
 $(function () {
 	// 单次运行：显示静态数字
 	initializeDivergenceMeter({
-		divergenceMeterElement: $('.divergence-meter'),
-		minimalUpdateDelay: 0,
-		maximalUpdateDelay: 0,
-		minimalTransitionNumber: 8,
-		maximalTransitionNumber: 20,
-		transitionDelay: 60,
-		singleRun: true,
+		minimalUpdateDelay: 5000,           // 动态模式下，最小刷新间隔（ms）
+		maximalUpdateDelay: 15000,          // 动态模式下，最大刷新间隔（ms）
+		minimalTransitionNumber: 8,         // 每帧最少闪烁次数
+		maximalTransitionNumber: 20,        // 每帧最多闪烁次数
+		transitionDelay: 60,                // 每次闪烁间隔（ms）
+		cycleRun: true,                     // 循环运行（每隔10-20s获取一次数字）
 		Number: '1.048596'
 	});
 });
 
 // 初始化函数
 function initializeDivergenceMeter(options) {
-	var $frames = options.divergenceMeterElement.find('.frame');
+	var $frames = $('.divergence-meter').find('.frame');
 	runTransition($frames, options);
 }
 
@@ -78,7 +77,7 @@ function runTransition($frames, opts) {
 
 		token = str;
 
-		 // 预先显示小数点帧并标记为已 reveal
+		// 预先显示小数点帧并标记为已 reveal
 		$frames.each(function (i) {
 			if (token.charAt(i) === '.') {
 				setFrameImage($frames.eq(i), '.');
@@ -106,7 +105,7 @@ function runTransition($frames, opts) {
 			if (allRevealed) {
 				clearInterval(intervalId);
 				// 若循环模式，延迟后重新启动
-				if (!opts.singleRun) {
+				if (opts.cycleRun) {
 					setTimeout(function () {
 						runTransition($frames, opts);
 					}, generateRandomInteger(opts.minimalUpdateDelay, opts.maximalUpdateDelay));
