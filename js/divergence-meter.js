@@ -9,6 +9,9 @@ $(function () {
 		cycleRun: true,                     // 循环运行（每隔10-20s获取一次数字）
 		Number: '1.048596'
 	});
+	
+	// 打印开源信息
+	printProjectInfo()
 });
 
 // 初始化函数
@@ -113,4 +116,18 @@ function runTransition($frames, opts) {
 			}
 		}, opts.transitionDelay);
 	});
+}
+
+// 开源信息
+function printProjectInfo() {
+    var license = "MIT License";
+    var github = "https://github.com/MskTmi/DivergenceMeter";
+    var disclaimer = "This project is for learning and reference only, and does not bear any responsibility.";
+    console.group("Project Information");
+
+    console.log("%cThis project is licensed under the " + license, "color: darkorange; font-size: 20px;");
+    console.log("%cThe source code for this project is hosted on " + github, "color: darkorange; font-size: 20px;");
+    console.log("%cDisclaimer: " + disclaimer, "color: darkorange; font-size: 20px;");
+
+    console.groupEnd();
 }
