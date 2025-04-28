@@ -78,6 +78,14 @@ function runTransition($frames, opts) {
 
 		token = str;
 
+		 // 预先显示小数点帧并标记为已 reveal
+		$frames.each(function (i) {
+			if (token.charAt(i) === '.') {
+				setFrameImage($frames.eq(i), '.');
+				reveals[i] = true;
+			}
+		});
+
 		// 启动循环：每 transitionDelay 一次，直到所有 reveals true
 		var intervalId = setInterval(function () {
 			var allRevealed = true;
